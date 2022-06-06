@@ -87,13 +87,13 @@ class QbDownloader:
                 buttons = button_build.ButtonMaker()
                 gid = self.ext_hash[:12]
                 if WEB_PINCODE:
-                    buttons.buildbutton("Select Files", f"{BASE_URL}/app/files/{self.ext_hash}")
+                    buttons.buildbutton("📂Select Files📂", f"{BASE_URL}/app/files/{self.ext_hash}")
                     buttons.sbutton("Pincode", f"qbs pin {gid} {pincode}")
                 else:
-                    buttons.buildbutton("Select Files", f"{BASE_URL}/app/files/{self.ext_hash}?pin_code={pincode}")
-                buttons.sbutton("Done Selecting", f"qbs done {gid} {self.ext_hash}")
+                    buttons.buildbutton("🔁Select Files🔁", f"{BASE_URL}/app/files/{self.ext_hash}?pin_code={pincode}")
+                buttons.sbutton("↗Done Selecting↗", f"qbs done {gid} {self.ext_hash}")
                 QBBUTTONS = InlineKeyboardMarkup(buttons.build_menu(2))
-                msg = "Your download paused. Choose files then press Done Selecting button to start downloading."
+                msg = "▶Your download paused▶. Choose files then press Done Selecting button to start downloading."
                 sendMarkup(msg, self.__listener.bot, self.__listener.message, QBBUTTONS)
             else:
                 sendStatusMessage(self.__listener.message, self.__listener.bot)
@@ -163,7 +163,7 @@ class QbDownloader:
                     self.client.torrents_recheck(torrent_hashes=self.ext_hash)
                     self.__rechecked = True
                 elif TORRENT_TIMEOUT is not None and time() - self.__stalled_time >= TORRENT_TIMEOUT:
-                    self.__onDownloadError("Dead Torrent!")
+                    self.__onDownloadError("🧲 Dead Torrent! 🧲")
             elif tor_info.state == "missingFiles":
                 self.client.torrents_recheck(torrent_hashes=self.ext_hash)
             elif tor_info.state == "error":
@@ -213,7 +213,7 @@ class QbDownloader:
             LOGGER.info(f"Cancelling Seed: {self.__name}")
             self.client.torrents_pause(torrent_hashes=self.ext_hash)
         else:
-            self.__onDownloadError('Download stopped by user!')
+            self.__onDownloadError('⛔Download stopped by user!⛔')
 
 def get_confirm(update, context):
     query = update.callback_query
@@ -222,10 +222,10 @@ def get_confirm(update, context):
     data = data.split(" ")
     qbdl = getDownloadByGid(data[2])
     if not qbdl:
-        query.answer(text="This task has been cancelled!", show_alert=True)
+        query.answer(text="⛔This task has been cancelled!⛔", show_alert=True)
         query.message.delete()
     elif user_id != qbdl.listener().message.from_user.id:
-        query.answer(text="This task is not for you!", show_alert=True)
+        query.answer(text="⛔This task is not for you⛔!", show_alert=True)
     elif data[1] == "pin":
         query.answer(text=data[3], show_alert=True)
     elif data[1] == "done":
