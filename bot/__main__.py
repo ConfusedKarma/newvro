@@ -149,7 +149,7 @@ def main():
                     vro = kek.strftime('\n 𝗗𝗮𝘁𝗲 : %d/%m/%Y\n 𝗧𝗶𝗺𝗲: %I:%M%P')
                     msg = f" 𝐁𝐎𝐓 𝐑𝐄𝐒𝐓𝐀𝐑𝐓𝐄𝐃 \n{vro}\n\n#Restarted"
                 for tag, links in data.items():
-                     msg += f"\n\n{tag}: "
+                     msg += f"\n\n💀 {tag}: "
                      for index, link in enumerate(links, start=1):
                          msg += f" <a href='{link}'>{index}</a> |"
                          if len(msg.encode()) > 4000:
