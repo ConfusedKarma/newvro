@@ -3,6 +3,8 @@ from os import path as ospath, remove as osremove, execl as osexecl
 from subprocess import run as srun, check_output
 from psutil import disk_usage, cpu_percent, swap_memory, cpu_count, virtual_memory, net_io_counters, boot_time
 from time import time
+from datetime import datetime
+import pytz
 from sys import executable
 from telegram import InlineKeyboardMarkup
 from telegram.ext import CommandHandler
@@ -133,6 +135,7 @@ def bot_help(update, context):
     sendMarkup(help_string, context.bot, update.message, reply_markup)
 
 def main():
+def main():
     start_cleanup()
     if INCOMPLETE_TASK_NOTIFIER and DB_URI is not None:
         notifier_dict = DbManger().get_incomplete_tasks()
@@ -141,21 +144,23 @@ def main():
                 if ospath.isfile(".restartmsg"):
                     with open(".restartmsg") as f:
                         chat_id, msg_id = map(int, f)
-                    msg = 'Restarted successfully!'
+                    msg = '𝐑𝐞𝐬𝐭𝐚𝐫𝐭𝐞𝐝 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲!'
                 else:
-                    msg = 'Bot Restarted!'
+                    kek = datetime.now(pytz.timezone(f'Asia/Kolkata'))
+                    vro = kek.strftime('\n 𝗗𝗮𝘁𝗲 : %d/%m/%Y\n 𝗧𝗶𝗺𝗲: %I:%M%P')
+                    msg = f" 𝐁𝐎𝐓 𝐑𝐄𝐒𝐓𝐀𝐑𝐓𝐄𝐃 \n{vro}\n\n#Restarted"
                 for tag, links in data.items():
                      msg += f"\n\n{tag}: "
                      for index, link in enumerate(links, start=1):
                          msg += f" <a href='{link}'>{index}</a> |"
                          if len(msg.encode()) > 4000:
-                             if 'Restarted successfully!' in msg and cid == chat_id:
+                             if '𝐑𝐞𝐬𝐭𝐚𝐫𝐭𝐞𝐝 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲!' in msg and cid == chat_id:
                                  bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTMl', disable_web_page_preview=True)
                                  osremove(".restartmsg")
                              else:
                                  bot.sendMessage(cid, msg, 'HTML')
                              msg = ''
-                if 'Restarted successfully!' in msg and cid == chat_id:
+                if '𝐑𝐞𝐬𝐭𝐚𝐫𝐭𝐞𝐝 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲!' in msg and cid == chat_id:
                      bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTMl', disable_web_page_preview=True)
                      osremove(".restartmsg")
                 else:
@@ -164,7 +169,7 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
+        bot.edit_message_text("𝐑𝐞𝐬𝐭𝐚𝐫𝐭𝐞𝐝 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲!", chat_id, msg_id)
         osremove(".restartmsg")
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
