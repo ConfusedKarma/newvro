@@ -135,7 +135,6 @@ def bot_help(update, context):
     sendMarkup(help_string, context.bot, update.message, reply_markup)
 
 def main():
-def main():
     start_cleanup()
     if INCOMPLETE_TASK_NOTIFIER and DB_URI is not None:
         notifier_dict = DbManger().get_incomplete_tasks()
