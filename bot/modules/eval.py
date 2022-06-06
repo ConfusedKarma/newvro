@@ -9,7 +9,7 @@ from contextlib import redirect_stdout
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.telegram_helper.message_utils import sendMessage
-from bot import LOGGER, dispatcher
+from bot import dispatcher
 
 namespaces = {}
 
@@ -29,8 +29,6 @@ def namespace_of(chat, update, bot):
 def log_input(update):
     user = update.effective_user.id
     chat = update.effective_chat.id
-    LOGGER.info(
-        f"IN: {update.effective_message.text} (user={user}, chat={chat})")
 
 def send(msg, bot, update):
     if len(str(msg)) > 2000:
