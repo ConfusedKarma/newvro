@@ -29,19 +29,19 @@ basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
 
 LOGGER = getLogger(__name__)
 
-CONFIG_FILE_URL = environ.get('CONFIG_FILE_URL')
+CONFIG_URL = environ.get('CONFIG_URL')
 try:
-    if len(CONFIG_FILE_URL) == 0:
+    if len(CONFIG_URL) == 0:
         raise TypeError
     try:
-        res = rget(CONFIG_FILE_URL)
+        res = rget(CONFIG_URL)
         if res.status_code == 200:
             with open('config.env', 'wb+') as f:
                 f.write(res.content)
         else:
-            log_error(f"Failed to download config.env {res.status_code}")
+            log_error(f"⛔Failed to download config.env⛔ {res.status_code}")
     except Exception as e:
-        log_error(f"CONFIG_FILE_URL: {e}")
+        log_error(f"CONFIG_URL: {e}")
 except:
     pass
 
@@ -125,9 +125,6 @@ status_reply_dict = {}
 # Key: update.message.message_id
 # Value: An object of Status
 download_dict = {}
-# key: rss_title
-# value: [rss_feed, last_link, last_title, filter]
-rss_dict = {}
 
 AUTHORIZED_CHATS = set()
 SUDO_USERS = set()
@@ -169,7 +166,7 @@ try:
     TELEGRAM_API = getConfig('TELEGRAM_API')
     TELEGRAM_HASH = getConfig('TELEGRAM_HASH')
 except:
-    LOGGER.error("One or more env variables missing! Exiting now")
+    LOGGER.error("⛔One or more env variables missing! Exiting now⛔")
     exit(1)
 
 LOGGER.info("Generating BOT_SESSION_STRING")
@@ -228,11 +225,11 @@ else:
     sleep(1.5)
 
 try:
-    BASE_URL = getConfig('BASE_URL_OF_BOT').rstrip("/")
+    BASE_URL = getConfig('URL').rstrip("/")
     if len(BASE_URL) == 0:
         raise KeyError
 except:
-    log_warning('BASE_URL_OF_BOT not provided!')
+    log_warning('⛔BASE_URL_OF_BOT not provided⛔!')
     BASE_URL = None
 try:
     DB_URI = getConfig('DATABASE_URL')
@@ -268,25 +265,6 @@ try:
 except:
     INDEX_URL = None
     INDEX_URLS.append(None)
-try:
-    SEARCH_API_LINK = getConfig('SEARCH_API_LINK').rstrip("/")
-    if len(SEARCH_API_LINK) == 0:
-        raise KeyError
-except:
-    SEARCH_API_LINK = None
-try:
-    SEARCH_LIMIT = getConfig('SEARCH_LIMIT')
-    if len(SEARCH_LIMIT) == 0:
-        raise KeyError
-    SEARCH_LIMIT = int(SEARCH_LIMIT)
-except:
-    SEARCH_LIMIT = 0
-try:
-    RSS_COMMAND = getConfig('RSS_COMMAND')
-    if len(RSS_COMMAND) == 0:
-        raise KeyError
-except:
-    RSS_COMMAND = None
 try:
     CMD_INDEX = getConfig('CMD_INDEX')
     if len(CMD_INDEX) == 0:
@@ -328,20 +306,6 @@ try:
     ZIP_UNZIP_LIMIT = float(ZIP_UNZIP_LIMIT)
 except:
     ZIP_UNZIP_LIMIT = None
-try:
-    RSS_CHAT_ID = getConfig('RSS_CHAT_ID')
-    if len(RSS_CHAT_ID) == 0:
-        raise KeyError
-    RSS_CHAT_ID = int(RSS_CHAT_ID)
-except:
-    RSS_CHAT_ID = None
-try:
-    RSS_DELAY = getConfig('RSS_DELAY')
-    if len(RSS_DELAY) == 0:
-        raise KeyError
-    RSS_DELAY = int(RSS_DELAY)
-except:
-    RSS_DELAY = 900
 try:
     BUTTON_FOUR_NAME = getConfig('BUTTON_FOUR_NAME')
     BUTTON_FOUR_URL = getConfig('BUTTON_FOUR_URL')
@@ -517,13 +481,6 @@ if ospath.exists('drive_folder'):
                 INDEX_URLS.append(temp[2])
             except:
                 INDEX_URLS.append(None)
-try:
-    SEARCH_PLUGINS = getConfig('SEARCH_PLUGINS')
-    if len(SEARCH_PLUGINS) == 0:
-        raise KeyError
-    SEARCH_PLUGINS = jsnloads(SEARCH_PLUGINS)
-except:
-    SEARCH_PLUGINS = None
 
 updater = tgUpdater(token=BOT_TOKEN, request_kwargs={'read_timeout': 20, 'connect_timeout': 15})
 bot = updater.bot
