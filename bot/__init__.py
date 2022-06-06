@@ -131,6 +131,7 @@ SUDO_USERS = set()
 AS_DOC_USERS = set()
 AS_MEDIA_USERS = set()
 EXTENTION_FILTER = set(['.torrent'])
+LOG_CHANNEL = set()
 
 try:
     aid = getConfig('AUTHORIZED_CHATS')
@@ -169,7 +170,20 @@ except:
     LOGGER.error("⛔One or more env variables missing! Exiting now⛔")
     exit(1)
 
-LOGGER.info("Generating BOT_SESSION_STRING")
+if os.path.exists("log_channel.txt"):
+    with open("logs_chat.txt", "r+") as f:
+        lines = f.readlines()
+        for line in lines:
+            LOG_CHANNEL.add(int(line.split()[0]))
+try:
+    achats = getConfig("LOG_CHANNEL")
+    achats = achats.split(" ")
+    for chats in achats:
+        LOG_CHANNEL.add(int(chats))
+except:
+    LOGGER.error('🚫🚫Log Channel Details not provided!🚫🚫')
+
+LOGGER.info("💡💡Generating BOT_SESSION_STRING💡💡")
 app = Client(name='pyrogram', api_id=int(TELEGRAM_API), api_hash=TELEGRAM_HASH, bot_token=BOT_TOKEN, parse_mode=enums.ParseMode.HTML, no_updates=True)
 
 try:
