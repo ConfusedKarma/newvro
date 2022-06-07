@@ -139,16 +139,16 @@ def get_readable_message():
                     msg += f"\n<b>🔽 Downloaded:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 msg += f"\n<b>📍Speed:</b> {download.speed()} | <b>ETA:</b> {download.eta()}"
                 try:
-                    msg += f"\n<b>🍐 Seeders:</b> {download.aria_download().num_seeders}" \
+                    msg += f"\n<b>🌱 Seeders:</b> {download.aria_download().num_seeders}" \
                            f" | \n<b>⚙ Engine:</b> 𝗮𝗿𝗶𝗮𝟮\n<b>📶 Peers:</b> {download.aria_download().connections}"
                 except:
                     pass
                 try:
-                    msg += f"\n<b>🍐 Seeders:</b> {download.torrent_info().num_seeds}" \
+                    msg += f"\n<b>🌱 Seeders:</b> {download.torrent_info().num_seeds}" \
                            f" | \n<b>⚙ Engine:</b> 𝐪𝐁𝐢𝐭𝐭𝐨𝐫𝐫𝐞𝐧𝐭\n<b>⛳ Leechers:</b> {download.torrent_info().num_leechs}"
                 except:
                     pass
-                msg += f"\n<b>🕒 𝗘𝗹𝗮𝗽𝘀𝗲𝗱: </b>{get_readable_time(time() - download.message.date.timestamp())}"
+                msg += f"\n<b>⏳ 𝗘𝗹𝗮𝗽𝘀𝗲𝗱: </b>{get_readable_time(time() - download.message.date.timestamp())}"
                 msg += f'\n<b>💀 𝐔𝐬𝐞𝐫 :</b> <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a> (<code>{download.message.from_user.id}</code>)'
                 msg += f"\n<b>⛔ 𝐓𝐨 𝐒𝐭𝐨𝐩 :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
