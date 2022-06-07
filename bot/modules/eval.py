@@ -37,7 +37,6 @@ def send(msg, bot, update):
             bot.send_document(
                 chat_id=update.effective_chat.id, document=out_file)
     else:
-        LOGGER.info(f"OUT: '{msg}'")
         bot.send_message(
             chat_id=update.effective_chat.id,
             text=f"`{msg}`",
