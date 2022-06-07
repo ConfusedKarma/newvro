@@ -479,6 +479,18 @@ try:
         log_error(f"YT_COOKIES_URL: {e}")
 except:
     pass
+try:
+    FINISHED_PROGRESS_STR = getConfig('FINISHED_PROGRESS_STR')
+    if len(FINISHED_PROGRESS_STR) == 0:
+        FINISHED_PROGRESS_STR = '▰'
+except KeyError:
+    FINISHED_PROGRESS_STR = '▰'
+try:
+    UNFINISHED_PROGRESS_STR = getConfig('UNFINISHED_PROGRESS_STR')
+    if len(UNFINISHED_PROGRESS_STR) == 0:
+        UNFINISHED_PROGRESS_STR = '▱'
+except KeyError:
+    UNFINISHED_PROGRESS_STR = '▱'
 
 DRIVES_NAMES.append("Main")
 DRIVES_IDS.append(parent_id)
