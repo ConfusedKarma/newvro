@@ -185,7 +185,7 @@ except:
     LOGGER.error('🚫🚫Log Channel Details not provided!🚫🚫')
 
 LOGGER.info("💡💡Generating BOT_SESSION_STRING💡💡")
-app = Client(name='pyrogram', api_id=int(TELEGRAM_API), api_hash=TELEGRAM_HASH, bot_token=BOT_TOKEN, parse_mode=enums.ParseMode.HTML, no_updates=True)
+app = Client(name='PublicLeechCloneGroup', api_id=int(TELEGRAM_API), api_hash=TELEGRAM_HASH, bot_token=BOT_TOKEN, parse_mode=enums.ParseMode.HTML, no_updates=True)
 
 
 def aria2c_init():
