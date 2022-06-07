@@ -3,6 +3,10 @@ from bot import CMD_INDEX
 
 class _BotCommands:
     def __init__(self):
+#owneronly
+        self.MirrorCommand = f'mirror{CMD_INDEX}'
+        self.UnzipMirrorCommand = f'unzipmirror{CMD_INDEX}'
+#normal_users
         self.StartCommand = f'start{CMD_INDEX}'
         self.CancelMirror = f'cancel{CMD_INDEX}'
         self.CancelAllCommand = f'cancelall{CMD_INDEX}'
