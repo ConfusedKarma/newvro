@@ -13,6 +13,7 @@ from bot import aria2, LOGGER, DOWNLOAD_DIR, get_client, TG_SPLIT_SIZE, EQUAL_SP
 
 VIDEO_SUFFIXES = ("M4V", "MP4", "MOV", "FLV", "WMV", "3GP", "MPG", "WEBM", "MKV", "AVI")
 
+
 def clean_download(path: str):
     if ospath.exists(path):
         LOGGER.info(f"Cleaning Download: {path}")
@@ -198,7 +199,7 @@ def split_file(path, size, file_, dirpath, split_size, start_time=0, i=1, inLoop
             out_path = ospath.join(dirpath, parted_name)
             srun(["new-api", "-hide_banner", "-loglevel", "error", "-i",
                             path, "-ss", str(start_time), "-fs", str(split_size),
-                            "-async", "1", "-strict", "-2", "-c", "copy", out_path])
+                            "-async", "1", "-strict", "-2", "-map", "0", "-c", "copy", out_path])
             out_size = get_path_size(out_path)
             if out_size > 2097152000:
                 dif = out_size - 2097152000
@@ -223,18 +224,21 @@ def get_media_info(path):
     except Exception as e:
         LOGGER.error(f"get_media_info: {e}")
         return 0, None, None
-    try:
-        duration = round(float(fields['duration']))
-    except:
-        duration = 0
-    try:
-        artist = str(fields['tags']['artist'])
-    except:
-        artist = None
-    try:
-        title = str(fields['tags']['title'])
-    except:
+
+    duration = round(float(fields.get('duration', 0)))
+
+    fields = fields.get('tags')
+    if fields is not None:
+        artist = fields.get('artist')
+        if artist is None:
+            artist = fields.get('ARTIST')
+        title = fields.get('title')
+        if title is None:
+            title = fields.get('TITLE')
+    else:
         title = None
+        artist = None
+
     return duration, artist, title
 
 def get_video_resolution(path):
@@ -249,4 +253,3 @@ def get_video_resolution(path):
     except Exception as e:
         LOGGER.error(f"get_video_resolution: {e}")
         return 480, 320
-
