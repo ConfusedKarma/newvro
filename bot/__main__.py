@@ -70,7 +70,7 @@ def start(update, context):
 This bot can be used only in group!
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
-        sendMarkup(start_string, context.bot, update, reply_markup)
+        sendMarkup(start_string, context.bot, update.message, reply_markup)
     else:
         sendMarkup('𝐍𝐨𝐭 𝐀𝐮𝐭𝐡𝐨𝐫𝐢𝐬𝐞𝐝 𝐔𝐬𝐞𝐫', context.bot, update.message, reply_markup)
 
