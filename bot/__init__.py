@@ -131,7 +131,7 @@ AUTHORIZED_CHATS = set()
 SUDO_USERS = set()
 AS_DOC_USERS = set()
 AS_MEDIA_USERS = set()
-EXTENTION_FILTER = set(['.torrent'])
+EXTENTION_FILTER = set() 
 LOG_CHANNEL = set()
 
 try:
@@ -168,7 +168,7 @@ try:
     TELEGRAM_API = getConfig('TELEGRAM_API')
     TELEGRAM_HASH = getConfig('TELEGRAM_HASH')
 except:
-    LOGGER.error("⛔One or more env variables missing! Exiting now⛔")
+    log_error("⛔One or more env variables missing! Exiting now⛔")
     exit(1)
 
 if os.path.exists("log_channel.txt"):
@@ -191,7 +191,7 @@ app = Client(name='PublicLeechCloneGroup', api_id=int(TELEGRAM_API), api_hash=TE
 def aria2c_init():
     try:
         log_info("Initializing Aria2c")
-        link = "https://releases.ubuntu.com/21.10/ubuntu-21.10-desktop-amd64.iso.torrent"
+        link = "https://linuxmint.com/torrents/lmde-5-cinnamon-64bit.iso.torrent"
         dire = DOWNLOAD_DIR.rstrip("/")
         aria2.add_uris([link], {'dir': dire})
         sleep(3)
