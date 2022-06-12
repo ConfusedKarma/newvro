@@ -111,6 +111,22 @@ help = telegraph.create_page(
     )["path"]
 
 help_string = f'''
+/{BotCommands.MirrorCommand} Start mirroring to Google Drive. Send <b>/{BotCommands.MirrorCommand}</b> for more help
+
+/{BotCommands.ZipMirrorCommand} Start mirroring and upload the file/folder compressed with zip extension
+
+/{BotCommands.UnzipMirrorCommand}</b> [download_url][magnet_link]: Start mirroring and upload the file/folder extracted from any archive extension
+
+/{BotCommands.QbMirrorCommand} Start Mirroring using qBittorrent, Use <b>/{BotCommands.QbMirrorCommand} s</b> to select files before downloading
+
+/{BotCommands.QbZipMirrorCommand} Start mirroring using qBittorrent and upload the file/folder compressed with zip extension
+
+/{BotCommands.QbUnzipMirrorCommand} Start mirroring using qBittorrent and upload the file/folder extracted from any archive extension
+
+/{BotCommands.WatchCommand} [yt-dlp supported link]: Mirror yt-dlp supported link. Send <b>/{BotCommands.WatchCommand}</b> for more help
+
+/{BotCommands.ZipWatchCommand} [yt-dlp supported link]: Mirror yt-dlp supported link as zip
+#
 /{BotCommands.LeechCommand}: 𝐋𝐞𝐞𝐜𝐡 𝐓𝐨𝐫𝐫𝐞𝐧𝐭/𝐃𝐢𝐫𝐞𝐜𝐭 𝐥𝐢𝐧𝐤
 
 /{BotCommands.ZipLeechCommand}: 𝐋𝐞𝐞𝐜𝐡 𝐓𝐨𝐫𝐫𝐞𝐧𝐭/𝐃𝐢𝐫𝐞𝐜𝐭 𝐥𝐢𝐧𝐤 𝐚𝐧𝐝 𝐮𝐩𝐥𝐨𝐚𝐝 𝐚𝐬 .𝐳𝐢𝐩
