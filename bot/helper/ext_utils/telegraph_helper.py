@@ -11,7 +11,7 @@ from bot import LOGGER
 
 
 class TelegraphHelper:
-    def __init__(self, author_name=None, author_url=None):
+    def __init__(self, author_name=None, author_url=@PublicLeechCloneGroup):
         self.telegraph = Telegraph()
         self.short_name = ''.join(SystemRandom().choices(ascii_letters, k=8))
         self.access_token = None
@@ -72,10 +72,10 @@ class TelegraphHelper:
                     nxt_page += 1
             self.edit_page(
                 path = path[prev_page],
-                title = 'PublicLeechCloneGroup',
+                title = 'Mirror-leech-bot Torrent Search',
                 content=content
             )
         return
 
 
-telegraph=TelegraphHelper('PublicLeechCloneGroup', 't.me/PublicLeechCloneGroup')
+telegraph=TelegraphHelper('Mirror-Leech-Telegram-Bot', 'https://github.com/anasty17/mirror-leech-telegram-bot')
