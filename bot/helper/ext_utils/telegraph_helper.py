@@ -72,7 +72,7 @@ class TelegraphHelper:
                     nxt_page += 1
             self.edit_page(
                 path = path[prev_page],
-                title = 'Mirror-leech-bot Torrent Search',
+                title = 'PublicLeechCloneGroup',
                 content=content
             )
         return
