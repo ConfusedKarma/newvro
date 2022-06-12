@@ -11,7 +11,7 @@ from bot import LOGGER
 
 
 class TelegraphHelper:
-    def __init__(self, author_name=None, author_url=PublicLeechCloneGroup):
+    def __init__(self, author_name=None, author_url=None):
         self.telegraph = Telegraph()
         self.short_name = ''.join(SystemRandom().choices(ascii_letters, k=8))
         self.access_token = None
