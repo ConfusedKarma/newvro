@@ -389,7 +389,7 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
 
     if is_gdrive_link(link):
         if not isZip and not extract and not isLeech:
-            gmsg = f"Hey {tag}\nplease use /clone or /zipmirror"
+            gmsg = f"Hey {tag}\Not A Mirror Group"
             sendMessage(gmsg, bot, message)
         else:
             Thread(target=add_gd_download, args=(link, listener, is_gdtot)).start()
@@ -428,24 +428,6 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
         sleep(4)
         Thread(target=_mirror, args=(bot, nextmsg, isZip, extract, isQbit, isLeech, pswd, multi)).start()
 
-def mirror(update, context):
-    _mirror(context.bot, update.message)
-
-def unzip_mirror(update, context):
-    _mirror(context.bot, update.message, extract=True)
-
-def zip_mirror(update, context):
-    _mirror(context.bot, update.message, True)
-
-def qb_mirror(update, context):
-    _mirror(context.bot, update.message, isQbit=True)
-
-def qb_unzip_mirror(update, context):
-    _mirror(context.bot, update.message, extract=True, isQbit=True)
-
-def qb_zip_mirror(update, context):
-    _mirror(context.bot, update.message, True, isQbit=True)
-
 def leech(update, context):
     _mirror(context.bot, update.message, isLeech=True)
 
@@ -464,18 +446,7 @@ def qb_unzip_leech(update, context):
 def qb_zip_leech(update, context):
     _mirror(context.bot, update.message, True, isQbit=True, isLeech=True)
 
-mirror_handler = CommandHandler(BotCommands.MirrorCommand, mirror,
-                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-unzip_mirror_handler = CommandHandler(BotCommands.UnzipMirrorCommand, unzip_mirror,
-                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-zip_mirror_handler = CommandHandler(BotCommands.ZipMirrorCommand, zip_mirror,
-                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-qb_mirror_handler = CommandHandler(BotCommands.QbMirrorCommand, qb_mirror,
-                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-qb_unzip_mirror_handler = CommandHandler(BotCommands.QbUnzipMirrorCommand, qb_unzip_mirror,
-                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-qb_zip_mirror_handler = CommandHandler(BotCommands.QbZipMirrorCommand, qb_zip_mirror,
-                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+
 leech_handler = CommandHandler(BotCommands.LeechCommand, leech,
                                 filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
 unzip_leech_handler = CommandHandler(BotCommands.UnzipLeechCommand, unzip_leech,
