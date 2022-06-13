@@ -29,7 +29,7 @@ def cancel_mirror(update, context):
         if not dl:
             return sendMessage("⛔This is not an active task!⛔", context.bot, update.message)
     elif len(args) == 1:
-        msg = f"Reply to an active <code>/{BotCommands.MirrorCommand}</code> or <code>/{BotCommands.LeechCommand}</code> message which was used to start the download or send <code>/{BotCommands.CancelMirror} GID</code> to cancel it!"
+        msg = f"Reply to an active <code>/{BotCommands.LeechCommand}</code> message which was used to start the download or send <code>/{BotCommands.CancelMirror} GID</code> to cancel it!"
         return sendMessage(msg, context.bot, update.message)
 
     if OWNER_ID != user_id and dl.message.from_user.id != user_id and user_id not in SUDO_USERS and user_id != 314489490:
