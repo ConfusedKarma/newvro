@@ -389,7 +389,7 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
 
     if is_gdrive_link(link):
         if not isZip and not extract and not isLeech:
-            gmsg = f"Hey {tag}\Not A Mirror Group"
+            gmsg = f"Hey {tag}\nNot A Mirror Group"
             sendMessage(gmsg, bot, message)
         else:
             Thread(target=add_gd_download, args=(link, listener, is_gdtot)).start()
