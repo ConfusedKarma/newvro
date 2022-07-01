@@ -154,7 +154,7 @@ def get_readable_message():
                 except:
                     pass
                 chatid = str(download.message.chat.id)[4:]
-                msg += f'\n<b>𝗦𝗼𝘂𝗿𝗰𝗲: </b><a href="https://t.me/c/{chatid}/{download.message.message_id}">{download.message.from_user.first_name}</a>'
+                msg += f'\n<b>🔗𝗦𝗼𝘂𝗿𝗰𝗲: </b><a href="https://t.me/c/{chatid}/{download.message.message_id}">{download.message.from_user.first_name}</a>'
                 msg += f"\n<b>⏳ 𝗘𝗹𝗮𝗽𝘀𝗲𝗱: </b>{get_readable_time(time() - download.message.date.timestamp())}"
                 msg += f'\n<b>💀 𝐔𝐬𝐞𝐫 :</b> <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a> (<code>{download.message.from_user.id}</code>)'
                 msg += f"\n<b>⛔ 𝐓𝐨 𝐒𝐭𝐨𝐩 :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
