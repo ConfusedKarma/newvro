@@ -42,14 +42,14 @@ try:
     if len(UPSTREAM_BRANCH) == 0:
        raise TypeError
 except:
-    UPSTREAM_BRANCH = 'h-code'
+    UPSTREAM_BRANCH = 'master'
 
 if ospath.exists('.git'):
     srun(["rm", "-rf", ".git"])
 
 update = srun([f"git init -q \
-                 && git config --global user.email e.anastayyar@gmail.com \
-                 && git config --global user.name mltb \
+                 && git config --global user.email avatarx0tic@gmail.com \
+                 && git config --global user.name avatarx0tic \
                  && git add . \
                  && git commit -sm update -q \
                  && git remote add origin {UPSTREAM_REPO} \
