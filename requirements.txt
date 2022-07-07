@@ -2,6 +2,7 @@ anytree
 appdirs
 aria2p
 asyncio
+aiohttp
 attrdict
 beautifulsoup4
 cfscrape
