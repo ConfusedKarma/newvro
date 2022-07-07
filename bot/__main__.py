@@ -78,6 +78,7 @@ def restart(update, context):
     restart_message = sendMessage("Restarting...", context.bot, update.message)
     if Interval:
         Interval[0].cancel()
+        Interval.clear()
     alive.kill()
     clean_all()
     srun(["pkill", "-9", "-f", "gunicorn|extra-api|last-api|megasdkrest|new-api"])
