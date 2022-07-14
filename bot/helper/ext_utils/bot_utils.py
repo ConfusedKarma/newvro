@@ -196,7 +196,7 @@ def get_readable_message():
             buttons.sbutton("⬅️Prev", "status pre")
             buttons.sbutton(f"{PAGE_NO}/{pages}", str(THREE))
             buttons.sbutton("➡️Next", "status nex")
-            buttons.sbutton(f"Statistics\nTasks: {tasks}", str(FOUR))
+            buttons.sbutton(f"Statistics\n\nTasks: {tasks}", str(FOUR))
             button = InlineKeyboardMarkup(buttons.build_menu(3))
             return msg + bmsg, button
         return msg + bmsg, sbutton
