@@ -459,4 +459,4 @@ def appdrive(url: str) -> str:
     if not info_parsed['error']:
         return info_parsed
     else:
-        raise DirectDownloadLinkException(f"{info_parsed['error_message']}")
+        return DirectDownloadLinkException(f"{info_parsed['error_message']}")
