@@ -483,6 +483,14 @@ try:
         UNFINISHED_PROGRESS_STR = '▱'
 except KeyError:
     UNFINISHED_PROGRESS_STR = '▱'
+try:
+    APPDRIVE_EMAIL = getConfig('APPDRIVE_EMAIL')
+    APPDRIVE_PASS = getConfig('APPDRIVE_PASS')
+    if len(APPDRIVE_EMAIL) == 0 or len(APPDRIVE_PASS) == 0:
+        raise KeyError
+except KeyError:
+    APPDRIVE_EMAIL = None
+    APPDRIVE_PASS = None
 
 DRIVES_NAMES.append("Main")
 DRIVES_IDS.append(parent_id)
