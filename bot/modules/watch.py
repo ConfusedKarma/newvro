@@ -258,7 +258,7 @@ def select_format(update, context):
     del listener_dict[task_id]
 
 def _auto_cancel(msg, msg_id):
-    sleep(120)
+    sleep(60)
     try:
         del listener_dict[msg_id]
         editMessage('⛔Timed out! Task has been automatically cancelled⛔.', msg)
