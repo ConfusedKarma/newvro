@@ -211,22 +211,26 @@ input[type="submit"]:hover, input[type="submit"]:focus{
   z-index: 10000;
 }
 </style>
+<script>
+function s_validate() {
+    if ($("input[name^='filenode_']:checked").length == 0) {
+        alert("Please select at least one file");
+        return false;
+        }
+    }
+</script>
 </head>
 <body>
   <!--© Designed and coded by @bipuldey19-Telegram-->
     <header>
       <div class="brand">
         <img
-          src="https://telegra.ph/file/cc06d0c613491080cc174.png"
+          src="https://telegra.ph/file/fccbfe094464a939b9f37.jpg"
           alt="logo"
         />
-        <a href="https://t.me/anas_tayyar">
+        <a href="https://t.me/PublicLeechCloneGroup">
           <h2 class="name">Qbittorrent Selection</h2>
         </a>
-      </div>
-      <div class="social">
-        <a href="https://www.github.com/anasty17/mirror-leech-telegram-bot"><i class="fab fa-github"></i></a>
-        <a href="https://t.me/anas_tayyar"><i class="fab fa-telegram"></i></a>
       </div>
     </header>
     <div id="sticks">
@@ -234,7 +238,7 @@ input[type="submit"]:hover, input[type="submit"]:focus{
         <h4>Selected files size: <b id="checked_size">0</b> of <b id="total_size">0</b></h4>
     </div>
       <section>
-      <form action="{form_url}" method="POST">
+      <form action="{form_url}" onsubmit="return s_validate()" method="POST">
        {My_content}
        <input type="submit" name="Select these files ;)">
       </form>
@@ -413,7 +417,7 @@ code_page = """
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Torrent Code Checker</title>
-    <link rel="icon" href="https://telegra.ph/file/cc06d0c613491080cc174.png" type="image/jpg">
+    <link rel="icon" href="https://telegra.ph/file/fccbfe094464a939b9f37.jpg" type="image/jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -609,16 +613,12 @@ section span{
     <header>
       <div class="brand">
         <img
-          src="https://telegra.ph/file/cc06d0c613491080cc174.png"
+          src="https://telegra.ph/file/fccbfe094464a939b9f37.jpg"
           alt="logo"
         />
-        <a href="https://t.me/anas_tayyar">
+        <a href="https://t.me/PublicLeechCloneGroup">
           <h2 class="name">Qbittorrent Selection</h2>
         </a>
-      </div>
-      <div class="social">
-        <a href="https://www.github.com/anasty17/mirror-leech-telegram-bot"><i class="fab fa-github"></i></a>
-        <a href="https://t.me/anas_tayyar"><i class="fab fa-telegram"></i></a>
       </div>
     </header>
     <section>
@@ -753,7 +753,7 @@ def set_priority(hash_id):
 
 @app.route('/')
 def homepage():
-    return "<h1>See mirror-leech-telegram-bot <a href='https://www.github.com/anasty17/mirror-leech-telegram-bot'>@GitHub</a> By <a href='https://github.com/anasty17'>Anas</a></h1>"
+    return "<h1>Join PublicLeechCloneGroup <a href='https://t.me/PublicleechCloneGroup'>@Telegram</a> By <a href='https://t.me/refundisillegal'>Singh</a></h1>"
 
 @app.errorhandler(NotFound404Error)
 def page_not_found(e):
@@ -761,4 +761,3 @@ def page_not_found(e):
 
 if __name__ == "__main__":
     app.run()
-
