@@ -1,4 +1,4 @@
-FROM anasty17/mltb:heroku
+FROM deadavatar/pbc:latest
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
