@@ -529,4 +529,4 @@ def mdisk(url: str) -> str:
         text = uhh["download"]
         return text
     except:
-        raise DirectDownloadLinkException("ERROR: Error")
+        raise DirectDownloadLinkException("No Mdisk Support :(")
